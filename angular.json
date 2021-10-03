@@ -3,5 +3,35 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "demo": {
+      "projectType": "library",
+      "root": "projects/demo",
+      "sourceRoot": "projects/demo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/demo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/demo/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/demo/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "projects/demo/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "demo"
 }
